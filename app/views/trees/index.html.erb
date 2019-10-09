@@ -1,0 +1,5 @@
+<% @trees.each do |tree| %>
+    <li><%= link_to tree.species, tree_path(tree) %></li>
+    <li><%= tree.evergreen %></li>
+    <br>
+<% end %>

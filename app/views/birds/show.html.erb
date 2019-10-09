@@ -1,0 +1,9 @@
+<h1><%=@bird.name%></h1>
+
+
+<h3><%=@bird.song%></h3>
+<h3><%=@bird.color%></h3>
+
+<% @bird.trees.each do |tree| %>
+    <%= tree.species %>
+<% end %>

@@ -1,0 +1,25 @@
+<% if @bird.errors.any? %>
+    <% @bird.errors.full_messages.each do |message| %>
+        <h4><%= message %> 😳</h4>
+    <% end %>
+<% end %>
+
+<%= form_for @bird do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :color %>
+    <%= f.text_field :color %>
+    <%= f.label :song %>
+    <%= f.text_area :song %>
+    <h4>Create Tree</h4>
+    <%= f.collection_check_boxes :tree_ids, Tree.all, :id, :species %>
+    <br><br>
+    <%= f.fields_for :trees, @bird.trees.build do |ff| %>
+        <%= ff.label :species %>
+        <%= ff.text_field :species %>
+        <h6>Is this an evergreen?</h6>
+        <%= ff.check_box :evergreen %>
+    <% end %>
+    <br><br>
+    <%= f.submit %>
+<% end %>
